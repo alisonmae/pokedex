@@ -1,12 +1,9 @@
-puts "Welcome to Pokedex!"
+require_relative 'pksearch'
 
-puts "What Pokemon do you want to choose?"
-name
+puts "Welcome to your Pokédex!"
+puts "What Pokémon do you want to look up? You can search by name or Pokédex ID."
+name_or_id = gets.chomp.downcase
 
-# Selects Pokemon info & a random Giphy based on keyword
-name
-get_id
-
-
+PKSearch.new (name_or_id)
 
 puts "Goodbye!"
