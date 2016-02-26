@@ -9,8 +9,6 @@ class PKSearch
     @name = get_name(name_or_id)
     @id = get_id(name_or_id)
     @types_array = get_types(name_or_id)
-
-    types_array.each {|type| print type, " " }
   end
 
   def get_name(name_or_id)
