@@ -1,10 +1,10 @@
 puts "Welcome to Pokedex!"
 
 puts "What Pokemon do you want to choose?"
-pokemon_name
+name
 
 # Selects Pokemon info & a random Giphy based on keyword
-pokemon_name
+name
 get_id
 
 
