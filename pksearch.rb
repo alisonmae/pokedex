@@ -15,7 +15,7 @@ class PKSearch
     if name_or_id.to_i == 0
       name_or_id = name_or_id.capitalize
     else
-      HTTParty.get("http://pokeapi.co/api/v2/pokemon/#{name_or_id}")["name"]
+      HTTParty.get("http://pokeapi.co/api/v2/pokemon/#{name_or_id}")["name"].capitalize
     end
   end
 
