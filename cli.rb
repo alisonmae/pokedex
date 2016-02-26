@@ -12,7 +12,7 @@ puts "Pokedex #: #{pk.id}\n"
 
 print "Type(s): "
 pk.types_array.each {|type| print type.capitalize, " " }
-print "\n"
+print "\n\n"
 
 url = "http://api.giphy.com/v1/gifs/search?q=#{pk.name}&api_key=dc6zaTOxFJmzC"
 response = HTTParty.get(url)
