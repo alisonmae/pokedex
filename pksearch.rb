@@ -2,23 +2,15 @@ require 'httparty'
 require 'pry'
 
 class PKSearch
-  attr_accessor :name_or_id, :name, :id, :type, :type2
+  attr_accessor :name_or_id, :name, :id, :types_array
 
   def initialize(name_or_id)
     @name_or_id = name_or_id
     @name = get_name(name_or_id)
     @id = get_id(name_or_id)
+    @types_array = get_types(name_or_id)
 
-    # type = HTTParty.get("http://pokeapi.co/api/v2/pokemon/#{name_or_id}")["types"][1]["type"]["name"]
-    # type2 = HTTParty.get("http://pokeapi.co/api/v2/pokemon/#{name_or_id}")["types"][0]["type"]["name"]
-    #
-    # binding.pry
-    #
-    # if type2 != nil
-    #   puts "Type: #{type}  |  Type-2: #{type2}"
-    # else
-    #   puts "Type: #{type}"
-    # end
+    types_array.each {|type| print type, " " }
   end
 
   def get_name(name_or_id)
@@ -36,8 +28,16 @@ class PKSearch
       HTTParty.get("http://pokeapi.co/api/v2/pokemon/#{name_or_id}")["id"]
     end
   end
-end
 
-  # def get_types(name_or_id)
-  #   type = HTTParty.get("http://pokeapi.co/api/v2/pokemon/#{name_or_id}")["types"][1]["type"]["name"]
-  #   type2 = HTTParty.get("http://pokeapi.co/api/v2/pokemon/#{name_or_id}")["types"][0]["type"]["name"]
+  def get_types(name_or_id)
+    types_array = []
+    i = 0
+    types_hash = HTTParty.get("http://pokeapi.co/api/v2/pokemon/#{name_or_id}")["types"]
+
+    while i <= types_hash.length-1 do
+     types_array[i] = types_hash[i]["type"]["name"]
+     i += 1
+    end
+    types_array
+  end
+end
